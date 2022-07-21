@@ -1,0 +1,23 @@
+{% extends "categories/base.html" %}
+
+{% block title %}{{category.name}}{% endblock %}
+
+{% block main %}
+<div class="container">
+
+    {% if user.is_superuser == True  %}
+        <button class="btn btn-success mb-2"><a href="{% url 'new_post' category_id=category.pk %}" class="nav-link">Add Post</a></button>
+    {% endif %}
+</div>
+<div class="container">
+    {% for post in category.posts.all %}
+        <li class="list-group-item">
+            <div><strong><a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn btn-primary mb-1">{{post.title}}</a></strong></div>
+            <div><strong>{{post.content}}</strong></div>
+            <div><strong>{{post.category}}</strong></div>
+            <div><strong>{{post.created_by.username}}</strong></div>
+            <div><strong>{{post.created_dt}}</strong></div>
+        </li>
+    {% endfor %}
+</div>
+{% endblock main %}

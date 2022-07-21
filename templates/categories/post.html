@@ -1,0 +1,32 @@
+{% extends "categories/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block main %}
+<div class="container">
+        <div>
+            <div><strong>{{post.title}}</strong></div>
+            <div><strong>{{post.content}}</strong></div>
+            <div><strong>{{post.category}}</strong></div>
+            <div><strong>{{post.created_by.username}}</strong></div>
+            <div><strong>{{post.created_dt}}</strong></div>
+        </div>
+        <div>
+            {% for comment in post.comments.all %}
+            <p>{{comment.massage}}</p>
+            <p>{{comment.created_by.username}}</p>
+            <p>{{comment.created_dt}}</p>
+            {% endfor %}
+        </div>
+        <div class="mt-3">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" id="id_subject" name="comment">
+                </div>
+                <button type="submit" class="btn btn-success">Replay</button>
+            </form>
+        </div>
+</div>
+{% endblock main %}
