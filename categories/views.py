@@ -4,6 +4,7 @@ from django.urls import is_valid_path
 from .models import Category, Post, Comment
 from .forms import NewPostForm, NewCommentForm
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
@@ -38,12 +39,17 @@ def new_post(req, category_id):
     # user = User.objects.first()
     if req.method == "POST":
         form = NewPostForm(req.POST)
+        print(req.POST)
         if form.is_valid():
             # title and content of post is auto graped and saved by postform
             post = form.save(commit=False)
             # here added extra data to be saved with post
             post.category = category
             post.created_by = req.user
+            post.image = f"imgs/{req.FILES['image']}"
+            image = req.FILES["image"]
+            fss = FileSystemStorage()
+            fss.save(f"imgs/{image.name}", image)
             post.save()
             return redirect('category_posts', category_id=category.pk)
     else:
