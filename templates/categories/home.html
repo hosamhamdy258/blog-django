@@ -47,6 +47,9 @@
               <div class="mb-1 text-muted">{{post.created_dt}}</div>
               <p class="card-text mb-auto">{{post.content}}</p>
               <a href="{% url 'post' category_id=post.category.id post_id=post.pk %}" class="stretched-link">Continue reading</a>
+              <p class="card-text mb-auto">{{post.tags.slug}}</p>
+              
+
             </div>
             <div class="col-auto d-none d-lg-block"></div>
           </div>

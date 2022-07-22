@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from suit.apps import DjangoSuitConfig
+# from suit.apps import DjangoSuitConfig
 
 
 class CategoriesConfig(AppConfig):
@@ -7,6 +7,6 @@ class CategoriesConfig(AppConfig):
     name = 'categories'
 
 
-class SuitConfig(DjangoSuitConfig):
-    pass
+# class SuitConfig(DjangoSuitConfig):
+#     pass
     # layout = 'vertical'
