@@ -46,7 +46,7 @@
               <h3 class="mb-0">{{post.title}}</h3>
               <div class="mb-1 text-muted">{{post.created_dt}}</div>
               <p class="card-text mb-auto">{{post.content}}</p>
-              <a href="#" class="stretched-link">Continue reading</a>
+              <a href="{% url 'post' category_id=post.category.id post_id=post.pk %}" class="stretched-link">Continue reading</a>
             </div>
             <div class="col-auto d-none d-lg-block"></div>
           </div>
