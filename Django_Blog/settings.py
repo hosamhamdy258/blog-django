@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'accounts',
     'categories',
+    "taggit"
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,5 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 STATIC_ROOT = 'staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
