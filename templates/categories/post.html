@@ -4,8 +4,8 @@
 {% block title %}{{post.title}}{% endblock %}
 
 {% block main %}
-<div class="container">
-      <table class="table-info d-flex justify-content-center .table-striped">
+<div class="table-responsive">
+      <table class="table d-flex justify-content-center">
         <tbody>
           <tr class="justify-content-center">
             <th
@@ -36,8 +36,7 @@
               <div>
                 {% for comment in post.comments.all %}
                 <p>{{comment.massage}}</p>
-                <p>{{comment.created_by.username}}</p>
-                <p>{{comment.created_dt}}</p>
+                <p>{{comment.created_by.username}}-{{comment.created_dt}}</p>
                 {% endfor %}
               </div>
             </td>
@@ -57,6 +56,5 @@
           </tr>
         </tbody>
       </table>
-
 </div>
 {% endblock main %}

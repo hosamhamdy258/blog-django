@@ -3,21 +3,47 @@
 {% block title %}{{category.name}}{% endblock %}
 
 {% block main %}
-<div class="container">
+    <div class="container">
+      {% if user.is_superuser == True %}
+<!--    add post button-->
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button">
+          <strong>
+            <a
+            href="{% url 'new_post' category_id=category.pk %}"
+            class="nav-link mb-1"
+            >Add post</a>
+          </strong>
+        </button>
+      </div>
 
-    {% if user.is_superuser == True  %}
-        <button class="btn btn-success mb-2"><a href="{% url 'new_post' category_id=category.pk %}" class="nav-link">Add Post</a></button>
-    {% endif %}
-</div>
+      {% endif %}
+    </div>
+<br>
+<!--the post contents-->
 <div class="container">
     {% for post in category.posts.all %}
-        <li class="list-group-item">
-            <div><strong><a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn btn-primary mb-1">{{post.title}}</a></strong></div>
-            <div><strong>{{post.content}}</strong></div>
-            <div><strong>{{post.category}}</strong></div>
-            <div><strong>{{post.created_by.username}}</strong></div>
-            <div><strong>{{post.created_dt}}</strong></div>
-        </li>
+        <div class="table-responsive">
+                 <table class="table d-flex justify-content-center">
+            <tbody>
+              <tr class="justify-content-center">
+                <td scope="col" class="text-center">
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button class="btn btn-warning" type="button">
+                            <a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn btn-warning">{{post.title}}</a>
+                        </button>
+                    </div>
+                </td>
+              </tr>
+              <tr class="justify-content-center">
+                <td scope="col" class="text-center"><strong>{{post.category}}-{{post.created_by.username}}-{{post.created_dt}}</strong></td>
+              </tr>
+              <tr class="justify-content-center">
+                <td scope="col" class="text-center"><strong>{{post.content}}</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     {% endfor %}
 </div>
 {% endblock main %}
