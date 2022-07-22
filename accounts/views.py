@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
 from .form import SignupForm
 
@@ -14,4 +15,8 @@ def signUp(req):
             auth_login(req, user)
             return redirect('home')
 
-    return render(req, 'categories/signup.html', {'form': form})
+    return render(req, 'accounts/signup.html', {'form': form})
+
+
+# def login2(req):
+#     return HttpResponse("<div>hi</div>")
