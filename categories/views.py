@@ -10,8 +10,10 @@ from django.contrib.auth.decorators import login_required
 
 def home(req):
     categories = Category.objects.all()
+    posts = Post.objects.all().order_by('-created_dt')
+
     # user = User.objects.first()
-    return render(req, 'categories/home.html', {'categories': categories})
+    return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
 
 
 def new_category(req):
