@@ -1,5 +1,7 @@
+from enum import unique
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 # Create your models here.
@@ -17,7 +19,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     created_dt = models.DateTimeField(auto_now_add=True)
-
+    # slug = models.SlugField(unique=True,max_length=100)
+    tags = TaggableManager()
     def __str__(self):
         return self.title
 
