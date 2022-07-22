@@ -9,4 +9,4 @@ class CategoriesConfig(AppConfig):
 
 # class SuitConfig(DjangoSuitConfig):
 #     pass
-#     # layout = 'vertical'
+    # layout = 'vertical'
