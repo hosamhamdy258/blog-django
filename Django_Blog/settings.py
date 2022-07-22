@@ -81,11 +81,11 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': "postgres",
+        'NAME': "shopapp",
 
-        'USER': 'postgres',
+        'USER': 'djangomaster',
 
-        'PASSWORD': '3496',
+        'PASSWORD': '1234',
 
         'HOST': 'localhost',
 
