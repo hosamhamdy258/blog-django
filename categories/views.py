@@ -22,11 +22,20 @@ def home(req):
 
 def homeTags(req, tag_slug):
     categories = Category.objects.all()
-    posts = Post.objects.filter(tags__slug=tag_slug)
+    posts = Post.objects.filter(tags__slug=tag_slug).order_by('-created_dt')
     print(posts)
     # user = User.objects.first()
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
 
+
+def searchPosts(req):
+    print(req.POST['search'])
+    categories = Category.objects.all()
+    posts = Post.objects.filter(title__contains=req.POST['search']).order_by('-created_dt')
+    return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
+
+    
+    
 
 def new_category(req):
     if req.method == 'POST':
