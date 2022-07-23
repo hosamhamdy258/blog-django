@@ -40,6 +40,16 @@
         </button>
         <div class="collapse navbar-collapse myNavLink" id="navbarNavDropdown">
           <ul class="navbar-nav">
+            <li>
+              <form class="d-flex" role="search" method="POST" action="{% url 'search'%}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" value="">
+                <button class="btn btn-outline-secondary" type="submit">GO</button>
+              </form>
+        
+
+            </li>
+          
             {%if user.is_authenticated%}
             <li class="nav-item dropdown">
               <a
@@ -52,7 +62,9 @@
                 <strong>{{ user.username }}</strong>
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">My Account</a></li>
+                {% if user.is_superuser == True %}
+                <li><a class="dropdown-item" href="/admin">Admin Panal</a></li>
+                {%endif%}
                 <li>
                   <a class="dropdown-item" href="{% url 'password_change' %}"
                     >Change Password</a
