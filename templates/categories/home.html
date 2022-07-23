@@ -40,6 +40,7 @@
       <h3 class="text-center mb-3 rounded border p-2">News</h3>
       <div class="rounded border p-2">
         <!-- / -->
+       
         {% for post in posts %}
 
         <div class="col">
@@ -53,8 +54,7 @@
               <h3 class="mb-0">{{post.title}}</h3>
               <div class="mb-1 text-muted">{{post.created_dt}}</div>
               <p class="card-text mb-auto">{{post.content}}</p>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                 <div class="">
                   {% for tag in post.tags.all %}
                   <a class="badge badge-info">{{ tag }}1aaaaaa</a>
@@ -63,28 +63,26 @@
               <a href="{% url 'post' category_id=post.category.id post_id=post.pk %}" class="stretched-link">Continue reading</a>
               <p class="card-text mb-auto">{{post.tags.slug}}</p>
               
-=======
-=======
->>>>>>> origin/mohamed_ateya
+
               <a
                 href="{% url 'post' category_id=post.category.id post_id=post.pk %}"
                 >Continue reading</a
               >
+              
+            
               {%for tag in post.tags.all%}
               <button class="btn btn-warning btn-sm">
                 <a href="{% url 'postsTags' tag.slug%}">{{tag.name}}</a>
               </button>
-<<<<<<< HEAD
->>>>>>> origin/hosam
-=======
->>>>>>> origin/mohamed_ateya
 
               {%endfor%}
             </div>
             <div class="col-auto d-none d-lg-block"></div>
-            <img src="media/{{post.image}}" alt="" />
+            <img src="/media/{{post.image}}" alt="" />
           </div>
         </div>
+        {% empty %}
+              <h3>Sorry, no Posts found.</h3> 
         {% endfor %}
 
         <!-- / -->
