@@ -52,7 +52,9 @@
                 <strong>{{ user.username }}</strong>
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">My Account</a></li>
+                {% if user.is_superuser == True %}
+                <li><a class="dropdown-item" href="/admin">Admin Panal</a></li>
+                {%endif%}
                 <li>
                   <a class="dropdown-item" href="{% url 'password_change' %}"
                     >Change Password</a
