@@ -1,9 +1,14 @@
-{% extends "categories/base.html" %} {% load widget_tweaks %} {% block title
-%}{{post.title}}{% endblock %} {% block main %} {% if post.created_by == user %}
+{% extends "categories/base.html" %}
+{% load widget_tweaks %} 
+{% block title %}
+{{post.title}}
+{% endblock %}
+{% block main %}
+{% comment %} {% if post.created_by == user %}
 <div class="mt-3">
   <a href="#" class="btn btn-primary btn-sm" role="button">Edit</a>
 </div>
-{% endif %}
+{% endif %} {% endcomment %}
 <div class="table-responsive">
   <table class="table d-flex justify-content-center">
     <tbody>

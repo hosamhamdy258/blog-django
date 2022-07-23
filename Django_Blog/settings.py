@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'taggit',
     'widget_tweaks',
     'accounts',
     'categories',
-
+    
 ]
 
 MIDDLEWARE = [
@@ -99,9 +100,9 @@ WSGI_APPLICATION = 'Django_Blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shopapp',
-        'USER': 'djangomaster',
-        'PASSWORD': '1234',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -160,3 +161,5 @@ LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 STATIC_ROOT = 'staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
