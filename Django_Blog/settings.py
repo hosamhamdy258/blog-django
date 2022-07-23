@@ -97,13 +97,13 @@ WSGI_APPLICATION = 'Django_Blog.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shopapp',
-        'USER': 'djangomaster',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'pythonmenofia',
+       'USER': 'iti',
+       'PASSWORD': 'adam',
+       'HOST': 'localhost',
+       'PORT': '5432',
+   }
 }
 
 
