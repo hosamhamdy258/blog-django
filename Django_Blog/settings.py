@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taggit',
     'widget_tweaks',
     'accounts',
     'categories',
@@ -99,9 +98,9 @@ WSGI_APPLICATION = 'Django_Blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
+        'NAME': 'shopapp',
+        'USER': 'djangomaster',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }
