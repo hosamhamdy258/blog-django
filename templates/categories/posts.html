@@ -24,22 +24,24 @@
 <div class="container">
     {% for post in category.posts.all %}
         <div class="table-responsive">
-                 <table class="table d-flex justify-content-center">
+                 <table class="table justify-content-center">
             <tbody>
-              <tr class="justify-content-center">
-                <td scope="col" class="text-center">
+              <tr >
+                <td scope="col">
                     <div class="d-grid gap-2 col-4 mx-auto">
                         <button class="btn btn-info" type="button">
-                            <a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn">{{post.title}}</a>
+                            <a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn"><strong>{{post.category}}:</strong> {{post.title}}</a>
                         </button>
                     </div>
                 </td>
               </tr>
-              <tr class="justify-content-center">
-                <td scope="col" class="text-center"><strong>{{post.category}}-{{post.created_by.username}}-{{post.created_dt}}</strong></td>
+
+              <tr>
+                <td scope="col">{{post.content}}</td>
               </tr>
+
               <tr class="justify-content-center">
-                <td scope="col" class="text-center"><strong>{{post.content}}</strong></td>
+                <td><strong> {{post.created_by.username}}</strong> {{post.created_dt}}</td>
               </tr>
             </tbody>
           </table>
