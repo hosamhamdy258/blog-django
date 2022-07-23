@@ -2,7 +2,8 @@
 
 <!-- Start Body of All Pages-->
 
-{% block main %} {% for post in posts %} {%for tag in post.tags.all%}
+{% block main %}
+ {% for post in posts %} {%for tag in post.tags.all%}
 
 <button class="btn btn-warning btn-sm">
   <a href="{% url 'postsTags' tag.slug%}">{{tag.name}}</a>
