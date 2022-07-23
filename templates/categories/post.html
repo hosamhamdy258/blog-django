@@ -10,18 +10,31 @@
 </div>
 {% endif %} {% endcomment %}
 
-    <div class="card">
+    <div class="card m-3">
       <div class="card-body">
-        <h5 class="card-title">{{post.title}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{post.category}}</h6>
-        <p class="card-text">{{post.content}}</p>
-        <p class="card-text"><strong>{{post.created_by.username}}</strong> {{post.created_dt}}</p>
-        <p class="card-text text-muted"><div>
+          <div class="border border-secondary rounded p-3">
+
+          <div class="row g-0">
+              <div class="col-md-6">
+                <div class="card-body">
+                       <h5 class="card-title">{{post.title}}</h5>
+                       <h6 class="card-subtitle mb-2 text-muted">{{post.category}}</h6>
+                       <p class="card-text fs-3">{{post.content}}</p>
+                       <p class="card-text"><strong>{{post.created_by.username}}</strong> {{post.created_dt}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                 <img src="/media/{{post.image}}" class="img-fluid rounded-start" alt="" />
+              </div>
+          </div>
+          </div>
+
+        <p class="card-text text-muted m-3">
             {% for comment in post.comments.all %}
-            <p class="text-muted">{{comment.massage}}</p>
-            <p>{{comment.created_by.username}}-{{comment.created_dt}}</p>
+            <p class="text-muted fs-6 m-0">{{comment.massage}}</p>
+            <p class="m-0">{{comment.created_by.username}}-{{comment.created_dt}}</p>
             {% endfor %}
-          </div></p>
+          </p>
          <form method="post" class="container" novalidate>
               {% csrf_token %} {% include 'categories/includes/form.html' %}
            <div class="text-center">
