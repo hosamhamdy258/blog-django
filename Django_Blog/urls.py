@@ -19,7 +19,7 @@ from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('grappelli/', include('grappelli.urls')),
+    # path('grappelli/', include('grappelli.urls')),
     path('', include('categories.urls')),
     path('', include('accounts.urls')),
 ]
