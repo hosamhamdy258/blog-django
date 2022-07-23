@@ -16,20 +16,16 @@ def home(req):
     categories = Category.objects.all()
     posts = Post.objects.all().order_by('-created_dt')
 
-    # user = User.objects.first()
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
 
 
 def homeTags(req, tag_slug):
     categories = Category.objects.all()
     posts = Post.objects.filter(tags__slug=tag_slug).order_by('-created_dt')
-    print(posts)
-    # user = User.objects.first()
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
 
 
 def searchPosts(req):
-    print(req.POST['search'])
     categories = Category.objects.all()
     posts = Post.objects.filter(title__contains=req.POST['search']).order_by('-created_dt')
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
@@ -56,10 +52,8 @@ def category_posts(req, category_id):
 @login_required
 def new_post(req, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    # user = User.objects.first()
     if req.method == "POST":
         form = NewPostForm(req.POST)
-        print(req.POST)
         if form.is_valid():
             # title and content of post is auto graped and saved by postform
             post = form.save(commit=False)

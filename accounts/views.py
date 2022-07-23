@@ -18,5 +18,3 @@ def signUp(req):
     return render(req, 'accounts/signup.html', {'form': form})
 
 
-# def login2(req):
-#     return HttpResponse("<div>hi</div>")
