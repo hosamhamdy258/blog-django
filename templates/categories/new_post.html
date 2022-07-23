@@ -5,7 +5,7 @@
 {% block title %}New Post{% endblock %}
 
 {% block main %}
-  <form method="post" class="container border rounded p-3" enctype="multipart/form-data" novalidate>
+  <form method="post" class="container border rounded p-3 fs-5" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     {% include 'categories/includes/form.html' %}
           <div class="d-grid gap-2 col-6 mx-auto">
