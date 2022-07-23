@@ -13,7 +13,15 @@ from django.core.files.storage import FileSystemStorage
 def home(req):
     categories = Category.objects.all()
     posts = Post.objects.all().order_by('-created_dt')
-    
+
+    # user = User.objects.first()
+    return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
+
+
+def homeTags(req, tag_slug):
+    categories = Category.objects.all()
+    posts = Post.objects.filter(tags__slug=tag_slug)
+    print(posts)
     # user = User.objects.first()
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
 
@@ -47,10 +55,14 @@ def new_post(req, category_id):
             # here added extra data to be saved with post
             post.category = category
             post.created_by = req.user
-            # post.image = f"imgs/{req.FILES['image']}"
-            # image = req.FILES["image"]
-            # fss = FileSystemStorage()
-            # fss.save(f"imgs/{image.name}", image)
+            try:
+                post.image = f"imgs/{req.FILES['image']}"
+                image = req.FILES["image"]
+                fss = FileSystemStorage()
+                fss.save(f"imgs/{image.name}", image)
+            except:
+                post.image = "imgs/blank.png"
+
             post.save()
             form.save_m2m()
             return redirect('category_posts', category_id=category.pk)

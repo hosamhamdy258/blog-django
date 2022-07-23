@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('tags/<slug:tag_slug>', views.homeTags, name='postsTags'),
     path('new_category', views.new_category, name='new_category'),
     path('categories/<int:category_id>/', views.category_posts, name='category_posts'),
     path('categories/<int:category_id>/new/', views.new_post, name='new_post'),
