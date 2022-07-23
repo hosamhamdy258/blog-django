@@ -21,31 +21,17 @@
     </div>
 <br>
 <!--the post contents-->
-<div class="container">
+<div class="card">
     {% for post in category.posts.all %}
-        <div class="table-responsive">
-                 <table class="table justify-content-center">
-            <tbody>
-              <tr >
-                <td scope="col">
-                    <div class="d-grid gap-2 col-4 mx-auto">
-                        <button class="btn btn-info" type="button">
-                            <a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn"><strong>{{post.category}}:</strong> {{post.title}}</a>
-                        </button>
-                    </div>
-                </td>
-              </tr>
 
-              <tr>
-                <td scope="col">{{post.content}}</td>
-              </tr>
-
-              <tr class="justify-content-center">
-                <td><strong> {{post.created_by.username}}</strong> {{post.created_dt}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-    {% endfor %}
+      <div class="card-body">
+          <a href="{% url 'post' category_id=category.pk post_id=post.pk %}" class="btn btn-light mb-1" >{{post.title}}</a>
+          <h6 class="card-subtitle mb-2 text-muted">{{post.category}}</h6>
+          <p class="card-text">{{post.content}}</p>
+          <p class="card-text"><strong>{{post.created_by.username}}</strong> {{post.created_dt}}</p>
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
 {% endblock main %}
