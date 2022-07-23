@@ -23,7 +23,11 @@ def homeTags(req, tag_slug):
     posts = Post.objects.filter(tags__slug=tag_slug)
     print(posts)
     # user = User.objects.first()
+<<<<<<< HEAD
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts,})
+=======
+    return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
+>>>>>>> origin/mohamed_ateya
 
 
 def new_category(req):
@@ -42,30 +46,16 @@ def category_posts(req, category_id):
     return render(req, 'categories/posts.html', {'category': category})
 
 
-# def detail_view(request, slug):
-#     post = get_object_or_404(Post, slug=slug)
-#     return render(request, 'categories/detailed.html', {'post': post})
-# def tagged(request, slug):
-#     tag = get_object_or_404(Tag, slug=slug)
-#     posts = Post.objects.filter(tags=tag)
-#     context = {
-#         'tag':tag,
-#         'posts':posts,
-#     }
-#     return render(request, 'home.html', context)
-
 @login_required
 def new_post(req, category_id):
     category = get_object_or_404(Category, pk=category_id)
     # user = User.objects.first()
-    common_tags = Post.tags.most_common()[:4]
     if req.method == "POST":
         form = NewPostForm(req.POST)
         print(req.POST)
         if form.is_valid():
             # title and content of post is auto graped and saved by postform
             post = form.save(commit=False)
-            # post.slug = slugify(post.title)
             # here added extra data to be saved with post
             post.category = category
             post.created_by = req.user
@@ -102,4 +92,3 @@ def post(req, category_id, post_id):
         form = NewCommentForm()
 
     return render(req, 'categories/post.html', {'post': post, 'form': form})
-
