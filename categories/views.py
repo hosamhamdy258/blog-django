@@ -23,11 +23,7 @@ def homeTags(req, tag_slug):
     posts = Post.objects.filter(tags__slug=tag_slug)
     print(posts)
     # user = User.objects.first()
-<<<<<<< HEAD
-    return render(req, 'categories/home.html', {'categories': categories, "posts": posts,})
-=======
     return render(req, 'categories/home.html', {'categories': categories, "posts": posts})
->>>>>>> origin/mohamed_ateya
 
 
 def new_category(req):

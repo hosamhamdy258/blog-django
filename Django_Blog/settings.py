@@ -43,10 +43,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'accounts',
     'categories',
-<<<<<<< HEAD
-=======
     
->>>>>>> origin/mohamed_ateya
 ]
 
 MIDDLEWARE = [
@@ -102,9 +99,9 @@ WSGI_APPLICATION = 'Django_Blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shopapp',
-        'USER': 'djangomaster',
-        'PASSWORD': '1234',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432',
     }
